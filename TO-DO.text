@@ -9,11 +9,11 @@ Here's a comprehensive **📝 To-Do list** to help you start building the **AI C
 
 ### 📦 Phase 1: Project Initialization & Environment Setup
 
-- [ ] Create GitHub repo and initialize local project directory (`aicpa`)
-- [ ] Create and activate a Python virtual environment (`aicpa-env`)
-- [ ] Create `requirements.txt` with the dependencies listed earlier
-- [ ] Run `pip install -r requirements.txt` to install dependencies
-- [ ] Verify GPU availability with `torch.cuda.is_available()` and NVML integration using `pynvml`
+- [x] Create GitHub repo and initialize local project directory (`aicpa`)
+- [x] Create and activate a Python virtual environment (`aicpa-env`)
+- [x] Create `requirements.txt` with the dependencies listed earlier
+- [x] Run `pip install -r requirements.txt` to install dependencies
+- [x] Verify GPU availability with `torch.cuda.is_available()` and NVML integration using `pynvml`
 
 ---
 
