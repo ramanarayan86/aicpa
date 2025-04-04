@@ -1,0 +1,158 @@
+
+Here's a comprehensive **📝 To-Do list** to help you start building the **AI Code Performance Analyzer (AICPA)** from scratch on your local machine — step by step.
+
+---
+
+## ✅ **AICPA: From Scratch To-Do List**
+
+---
+
+### 📦 Phase 1: Project Initialization & Environment Setup
+
+- [ ] Create GitHub repo and initialize local project directory (`aicpa`)
+- [ ] Create and activate a Python virtual environment (`aicpa-env`)
+- [ ] Create `requirements.txt` with the dependencies listed earlier
+- [ ] Run `pip install -r requirements.txt` to install dependencies
+- [ ] Verify GPU availability with `torch.cuda.is_available()` and NVML integration using `pynvml`
+
+---
+
+### 🧱 Phase 2: Project Scaffolding
+
+- [ ] Create project folder structure:
+
+```
+aicpa/
+├── cli/
+│   └── main.py              # CLI entry point
+├── ingestion/
+│   └── model_loader.py      # PyTorch, TorchScript, C++ model ingestion
+├── profiler/
+│   ├── torch_profiler.py    # PyTorch + CUDA profiling
+│   └── nvml_profiler.py     # GPU hardware stats
+├── analysis/
+│   ├── graph_builder.py     # FX-based graph extraction
+│   └── performance_estimator.py  # Efficiency and theoretical limits
+├── reporting/
+│   └── cli_report.py        # Efficiency tables, bottlenecks, suggestions
+├── plugins/
+│   └── onnx_plugin.py       # Placeholder for ONNX plugin
+├── data/
+│   └── reports/             # Logs, CSV/JSON reports
+├── tests/
+├── requirements.txt
+└── README.md
+```
+
+- [ ] Set up `argparse` or `click` based CLI in `cli/main.py`
+- [ ] Add `__init__.py` to make directories importable as packages
+
+---
+
+### 🧪 Phase 3: MVP Model Ingestion + Dummy Run
+
+- [ ] Implement a basic model loader that:
+  - Accepts Python `.py` models (e.g. torchvision/huggingface)
+  - Accepts TorchScript `.pt` files
+- [ ] Implement dummy input generator (e.g. for BERT: `[1, 512]`; for ResNet: `[1, 3, 224, 224]`)
+- [ ] Load ResNet18 and Hugging Face BERT to verify model loading
+
+---
+
+### 🔍 Phase 4: Static Graph Extraction (FX)
+
+- [ ] Integrate `torch.fx` to trace the model graph
+- [ ] For each node, extract:
+  - Op name
+  - Input/output shape
+  - Estimated FLOPs
+- [ ] Store graph nodes in an internal data structure
+
+---
+
+### 📉 Phase 5: Runtime Profiling (Torch + CUDA)
+
+- [ ] Use `torch.profiler.profile` to:
+  - Capture CPU and GPU time
+  - Record input/output shapes
+  - Record memory usage
+- [ ] Synchronize CUDA and get total execution time
+- [ ] Map profiler events back to FX nodes
+
+---
+
+### 💻 Phase 6: Hardware Profiling (NVML)
+
+- [ ] Use `pynvml` to extract:
+  - Device name, SM count, clock speeds
+  - GPU memory, utilization, temperature
+- [ ] Compute theoretical FLOPs and bandwidth
+- [ ] Cache GPU profile in `hardware_info.json`
+
+---
+
+### ⚙️ Phase 7: Efficiency Estimation + Bottleneck Detection
+
+- [ ] Compute ideal time per-op from FLOPs and GPU peak
+- [ ] Compare actual vs ideal → calculate % efficiency
+- [ ] Identify:
+  - Top-k time-consuming ops
+  - Low-efficiency ops (<50%)
+  - CPU vs GPU heavy ops
+
+---
+
+### 📊 Phase 8: Report Generation (CLI)
+
+- [ ] Implement rich CLI table for:
+  - Per-op timing
+  - Theoretical vs actual
+  - Efficiency %
+- [ ] Print:
+  - Annotated module-wise breakdown (e.g., ResNet blocks)
+  - Bottleneck summary
+  - Optimization hints (e.g., "Consider FP16 for matmuls")
+
+---
+
+### 🔌 Phase 9: Plugin System (Modular Design)
+
+- [ ] Define base `Plugin` class with expected methods:
+  - `ingest()`, `profile()`, `report()`
+- [ ] Load plugins from `plugins/` folder dynamically
+- [ ] Implement ONNX Runtime plugin prototype
+
+---
+
+### 🧠 Phase 10: GPT-Based Explainer Agent (Optional)
+
+- [ ] Add OpenAI API config (or local model later)
+- [ ] Generate explanations from analysis summary
+- [ ] Output human-readable suggestions like:
+  - "Layer X is slow due to low tensor core utilization..."
+
+---
+
+### 🧪 Phase 11: Test Suite
+
+- [ ] Test against:
+  - `torchvision.models.resnet18`
+  - `transformers.BertModel`
+  - TorchScript version of above
+- [ ] Validate report correctness
+- [ ] Add logging and error handling
+
+---
+
+### 🧹 Final Cleanup
+
+- [ ] Add logging with Python `logging` module
+- [ ] Write detailed `README.md` with usage
+- [ ] Add `setup.py` or `pyproject.toml` for packaging
+- [ ] Create sample CLI usage:
+  ```bash
+  python cli/main.py --model torchvision.models.resnet18 --batch-size 8
+  ```
+
+---
+
