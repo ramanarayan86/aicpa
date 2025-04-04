@@ -34,15 +34,15 @@ aicpa/
 ├── requirements.txt
 └── README.md
 ```
-
+---
 
 ## 🚀 Key Features
 
-- 🔍 Deep runtime and static profiling
-- ⚙️ Hardware-aware FLOPs and memory analysis
-- 📈 Op-by-op efficiency vs peak comparison
-- 🧠 AI Agents for optimization recommendations
-- 🧪 Support for PyTorch, TorchInductor, TorchScript, and C++
+-  Deep runtime and static profiling
+-  Hardware-aware FLOPs and memory analysis
+-  Op-by-op efficiency vs peak comparison
+-  AI Agents for optimization recommendations
+-  Support for PyTorch, TorchInductor, TorchScript, and C++
 
 ## 📦 To-Do
 
@@ -53,14 +53,4 @@ aicpa/
 
 ---
 
-## 📜 Sample `requirements.txt`
-
-```txt
-torch>=2.1
-pynvml
-torchvision
-pandas
-numpy
-streamlit
-plotly
 
