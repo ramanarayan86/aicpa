@@ -2,6 +2,19 @@ AICPA: AI Code Performance Analyzer
 
 A modular, AI-agent-powered system to analyze, benchmark, and optimize PyTorch/C++ ML code across NVIDIA GPUs using Torch Profiler, TorchInductor, and CUDA tools.
 
+
+## Install
+
+```pip install -e .```
+
+## Usage:
+1) Install necessary dependencies, including torch, transformers, pynvml, etc.
+2) Run: ```python -m aicpa.scripts.benchmark_cli --model bert-base-uncased --batch-size 2 --seq-len 32```
+3) This will load BERT, parse its static graph, profile it, detect naive bottlenecks, suggest naive optimizations, and provide a placeholder explanation.
+
+---
+
+
 ## 🧱 Directory Structure
 
 ```
